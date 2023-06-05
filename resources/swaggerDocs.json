@@ -190,6 +190,31 @@
           }
         }
       }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "default": "Invalid request!"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
     }
   },
   "paths": {
@@ -198,6 +223,7 @@
         "tags": ["quiz"],
         "summary": "Get all quizzes",
         "description": "Return all quizzes",
+        "security": [{ "bearerAuth": [] }],
         "parameters": [],
         "responses": {
           "200": {
@@ -219,6 +245,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       },
@@ -226,6 +255,7 @@
         "tags": ["quiz"],
         "summary": "Create new quiz",
         "description": "Return new quiz created",
+        "security": [{ "bearerAuth": [] }],
         "parameters": [],
         "requestBody": {
           "description": "New quiz's values",
@@ -255,6 +285,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -264,6 +297,7 @@
         "tags": ["quiz"],
         "summary": "Get quiz by id",
         "description": "Return single quiz",
+        "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
             "name": "id",
@@ -293,6 +327,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       },
@@ -300,6 +337,7 @@
         "tags": ["quiz"],
         "summary": "Update quiz by id",
         "description": "Return single quiz before update",
+        "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
             "name": "id",
@@ -340,6 +378,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       },
@@ -347,6 +388,7 @@
         "tags": ["quiz"],
         "summary": "Delete quiz by id",
         "description": "Return deleted quiz",
+        "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
             "name": "id",
@@ -376,6 +418,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
